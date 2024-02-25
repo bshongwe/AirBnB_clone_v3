@@ -154,7 +154,7 @@ class TestPlace(unittest.TestCase):
             self.assertEqual(place.latitude, 0.0)
 
     def test_longitude_attr(self):
-        """Test Place has attr longitude, and it's a float == 0.0"""
+        """Test if Place has attr longitude, and is a float == 0.0"""
         place = Place()
         self.assertTrue(hasattr(place, "longitude"))
         if models.storage_t == 'db':

@@ -59,7 +59,8 @@ class TestBaseModelDocs(unittest.TestCase):
 class TestBaseModel(unittest.TestCase):
     """Test the BaseModel class"""
     def test_instantiation(self):
-        """Test if object is created correctly"""
+        """Tests if object is created correctly"""
+        storage_get_count
         inst = BaseModel()
         self.assertIs(type(inst), BaseModel)
         inst.name = "Holberton"
@@ -111,7 +112,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(inst1.id, inst2.id)
 
     def test_to_dict(self):
-        """Test conversion of object attributes to dictionary for json"""
+        """Tests conversion of object attributes to dictionary for json"""
         my_model = BaseModel()
         my_model.name = "Holberton"
         my_model.my_number = 89
