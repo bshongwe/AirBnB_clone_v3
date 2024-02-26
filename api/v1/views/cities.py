@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-states
+State objects: create new view to handle all default RESTful API actions
 """
 
 
