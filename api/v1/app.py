@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-'''
-This script creates a Flask app and registers blueprint app_views with the Flask instance 'app'
-'''
+"""
+Create new Flask app, and register blueprint app_views to Flask instance app.
+"""
 
 from os import getenv
 from flask import Flask, jsonify
@@ -22,17 +22,18 @@ app.url_map.strict_slashes = False
 # Teardown function to close the SQLAlchemy session object after each request:
 @app.teardown_appcontext
 def teardown_db(exception):
-    '''
+    """
     Remove the current SQLAlchemy session object after each request.
-    '''
+    """
     storage.close()
 
 # Task 5
 # Error handler for 404 Not Found:
 @app.errorhandler(404)
 def not_found(error):
-    '''Return JSON response with "Not Found" error message.
-    '''
+    """
+    Return JSON response with "Not Found" error message.
+    """
     response = {'error': 'Not Found'}
     return jsonify(response), 404
 
