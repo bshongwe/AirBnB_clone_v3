@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 # Task 12
 # Enable CORS and allow requests from any origin:
-CORS(app, resources={r"/api/v1/*": {"origins": "0.0.0.0"}})
+CORS(app, resources={r'/api/v1/*': {"origins": "0.0.0.0"}})
 
 # Register the app_views blueprint:
 app.register_blueprint(app_views)
@@ -21,7 +21,7 @@ app.url_map.strict_slashes = False
 
 # Teardown function to close the SQLAlchemy session object after each request:
 @app.teardown_appcontext
-def teardown_db(exception):
+def teardown_engine(exception):
     """
     Remove the current SQLAlchemy session object after each request.
     """
@@ -36,10 +36,3 @@ def not_found(error):
     """
     response = {'error': 'Not Found'}
     return jsonify(response), 404
-
-if __name__ == '__main__':
-    # Get the host and port from environment variables.
-    HOST = getenv('HBNB_API_HOST', '0.0.0.0')
-    PORT = int(getenv('HBNB_API_PORT', 5000))
-    # Run the app in threaded mode for better performance:
-    app.run(host=HOST, port=PORT, threaded=True)
