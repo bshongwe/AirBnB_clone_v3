@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""__init__"""
+"""Creates a Blueprint instance"""
 from flask import Blueprint
 
 

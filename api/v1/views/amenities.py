@@ -16,7 +16,7 @@ from models.amenity import Amenity
 
 @app_views.route('/amenities', strict_slashes=False)
 def ret_amenities():
-    """retreives one state"""
+    """Retreive state"""
     amenities = storage.all(Amenity)
     j = []
     for obj in amenities.values():
@@ -26,7 +26,7 @@ def ret_amenities():
 
 @app_views.route('/amenities/<amenity_id>', strict_slashes=False)
 def ret_amenity_c(amenity_id):
-    """retreives one amenity"""
+    """Retreive amenity"""
     amenties = storage.get(Amenity, amenity_id)
     if not amenties:
         abort(404)
@@ -36,7 +36,7 @@ def ret_amenity_c(amenity_id):
 @app_views.route('/amenities/<amenity_id>',
                  methods=['DELETE'], strict_slashes=False)
 def remove_amenity(amenity_id):
-    """deletes a amenity"""
+    """Delete amenity"""
     obj = storage.get(Amenity, amenity_id)
     if obj is not None:
         obj.delete()
@@ -50,7 +50,7 @@ def remove_amenity(amenity_id):
 @app_views.route('/amenities',
                  methods=['POST'], strict_slashes=False)
 def ctreate_amenity():
-    """creates a state"""
+    """Create state"""
     http_data = request.get_json()
     if not http_data:
         abort(400, "Not a JSON")
@@ -66,7 +66,7 @@ def ctreate_amenity():
 @app_views.route('/amenities/<amenity_id>',
                  methods=['PUT'], strict_slashes=False)
 def update_amenity(amenity_id):
-    """updates a city"""
+    """Update city"""
     http_data = request.get_json()
     if not http_data:
         abort(400, "Not a JSON")

@@ -17,7 +17,7 @@ from models.city import City
 
 @app_views.route('/cities/<city_id>', strict_slashes=False)
 def ret_city_c(city_id):
-    """retreives one city"""
+    """Retreive city"""
     cities = storage.get(City, city_id)
     if not cities:
         abort(404)
@@ -26,7 +26,7 @@ def ret_city_c(city_id):
 
 @app_views.route('/states/<state_id>/cities', strict_slashes=False)
 def ret_state_id_c(state_id):
-    """retreives a state"""
+    """Retreive state"""
     states = storage.get(State, state_id)
     cities = []
     if states:
@@ -40,7 +40,7 @@ def ret_state_id_c(state_id):
 @app_views.route('/cities/<city_id>',
                  methods=['DELETE'], strict_slashes=False)
 def remove_city(city_id):
-    """deletes a city"""
+    """Delete city"""
     obj = storage.get(City, city_id)
     if obj is not None:
         obj.delete()
@@ -54,7 +54,7 @@ def remove_city(city_id):
 @app_views.route('/states/<state_id>/cities',
                  methods=['POST'], strict_slashes=False)
 def ctreate_city(state_id):
-    """creates a state"""
+    """Create state"""
     http_data = request.get_json()
     state = storage.get(State, state_id)
     if not http_data:
@@ -71,7 +71,7 @@ def ctreate_city(state_id):
 
 @app_views.route('/cities/<city_id>', methods=['PUT'], strict_slashes=False)
 def update_city(city_id):
-    """updates a city"""
+    """Update city"""
     http_data = request.get_json()
     if not http_data:
         abort(400, "Not a JSON")
