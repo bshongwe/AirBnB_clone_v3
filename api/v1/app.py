@@ -36,3 +36,10 @@ def not_found(error):
     """
     response = {'error': 'Not Found'}
     return jsonify(response), 404
+
+if __name__ == '__main__':
+    #Get the host and port from environment variables.
+    HOST = getenv('HBNB_API_HOST', '0.0.0.0')
+    PORT = int(getenv('HBNB_API_PORT', 5000))
+    #Run the app in threaded mode for better perfomance:
+    app.run(host=HOST, port=PORT, threaded=True)
